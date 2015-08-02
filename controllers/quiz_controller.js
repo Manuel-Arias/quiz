@@ -18,10 +18,10 @@ exports.show = function(req, res){
 
 //GET /quizes/:id/answer
 exports.answer = function(req, res){
-	models.Quiz.findById(req.params.quizId).then(function(quiz){
+	models.Quiz.find(req.params.quizId).then(function(quiz){
 		//res.locals.expReg = /^Roma$/i; 
 		//if (res.locals.expReg.test(req.query.respuesta)){
-		if (req.query.respuesta === quiz.respuesta){
+		if (req.query.respuesta.toLowerCase() === quiz.respuesta){
 			res.render('quizes/answer', 
 				{	quiz:quiz,
 					respuesta: 'Correcto'});
