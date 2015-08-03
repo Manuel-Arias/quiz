@@ -1,5 +1,6 @@
 var models = require('../models/models.js');
 
+var temas = ["Otro", "Humanidades", "Ocio", "Ciencia", "Tecnologia"];
 // Autoload :id
 exports.load = function(req, res, next, quizId){
 	models.Quiz.find(quizId).then(
@@ -40,7 +41,7 @@ exports.new = function(req, res){
 	var quiz = models.Quiz.build( //crea objeto quiz
 		{pregunta: "Pregunta", respuesta: "Respuesta"}
 	);
-	res.render('quizes/new', {quiz: quiz, errors: []});
+	res.render('quizes/new', {quiz: quiz, temas: temas, errors: []});
 };
 
 
@@ -66,7 +67,7 @@ exports.create = function(req, res){
 //GET /quizes/:id/edit
 exports.edit = function(req, res){
 	var quiz = req.quiz; // autoload de instancia de quiz
-	res.render('quizes/edit', {quiz: quiz, errors: []});
+	res.render('quizes/edit', {quiz: quiz, temas: temas, errors: []});
 };
 
 //PUT /quizes/:id
