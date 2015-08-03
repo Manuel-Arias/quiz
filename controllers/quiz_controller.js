@@ -90,6 +90,13 @@ exports.update = function(req, res){
 	);
 };
 
+// DELETE /quizes/:id
+exports.destroy = function(req, res){
+	req.quiz.destroy().then(function(){
+		res.redirect('/quizes');
+	}).catch(function(error){next(error)});
+};
+
 //GET /author
 exports.author = function(req,res){
 	res.render('author', {name: "Manuel Arias Cortés", urlPhoto:'/images/author.png', urlVideo:'https://www.youtube.com/embed/Yp79gBt56HU', errors: []})
