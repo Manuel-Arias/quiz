@@ -23,3 +23,7 @@ p {
 }
 
 #ErrorMsgs {color:#f61; font-size: smaller}
+
+.right{
+	float:right;
+}
