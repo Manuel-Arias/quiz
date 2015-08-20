@@ -21,6 +21,8 @@ exports.create = function(req, res) {
 
     var login     = req.body.login;
     var password  = req.body.password;
+    
+    req.session.cookie.expires = new Date(Date.now() + 120000);
 
     var userController = require('./user_controller');
     userController.autenticar(login, password, function(error, user) {
@@ -37,6 +39,7 @@ exports.create = function(req, res) {
 
         res.redirect(req.session.redir.toString());// redirección a path anterior a login
     });
+
 };
 
 // DELETE /logout   -- Destruir sesion 
